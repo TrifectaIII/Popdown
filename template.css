@@ -1,37 +1,59 @@
+body {
+    overflow: hidden;
+}
+
 .Popdown-container {
     /* display on top of  normal page*/
     z-index: 1;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 /* semi-transparent background on top of main page to bring user focus to the popdown */
-.Popdown-background {
+.Popdown-container .Popdown-background {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
-/* main box for popdown */
-.Popdown-box {
-
-    /* move to middle of screen */
+/* flex container for popdown boxes */
+.Popdown-container .Popdown-box-container {
     position: fixed;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
 
+/* main popdown box */
+.Popdown-container .Popdown-box-container .Popdown-box {
+    position: relative;
     max-width: 80%;
     background-color: white;
-
-    /* padding-bottom:0px; */
+    margin: 2em 0em;
     border-radius: 0.5rem;
 }
 
+.Popdown-header {
+    font-family: sans-serif;
+}
+
 .Popdown-message {
-    text-align: center;
     margin: 2rem;
+    margin-bottom: 5rem;
     font-family: sans-serif;
 }
 
@@ -42,9 +64,14 @@
 
 /* ok button on alert popdown */
 .Popdown-alert .Popdown-button {
+    position: absolute;
+    bottom:0;
+    right: 0;
+    left: 0;
     background-color: red;
     width:100%;
-    height: 2rem;
+    height: 3rem;
+    font-size: 2rem;
     border:0;
     border-radius: 0 0 0.5rem 0.5rem;
     outline: none;
