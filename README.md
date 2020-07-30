@@ -23,7 +23,7 @@ First, initalize the library.
 Popdown.start()
 ```
 
-#### Popdown.alert
+### Popdown.alert
 Syntax:
 ```
 Popdown.alert(message, callback, context);
@@ -33,7 +33,7 @@ Example:
 Popdown.alert('Hi!', () => {console.log('Hello!')}, this)
 ```
 
-#### Popdown.confirm
+### Popdown.confirm
 Syntax:
 ```
 Popdown.confirm(message, callback, context);
@@ -43,7 +43,7 @@ Example:
 Popdown.confirm('Do you like green eggs and ham?', (bool) => {console.log(bool)}, this)
 ```
 
-#### Popdown.prompt
+### Popdown.prompt
 Syntax:
 ```
 Popdown.prompt(message, callback, context);
