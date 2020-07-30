@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function build () {
+function buildString () {
     //read templates in as strings
     const js_template = fs.readFileSync(path.resolve(__dirname, 'template.js'), 'utf8');
     //remove newlines from html and css, and reduce all spaces to one at most
@@ -12,9 +12,18 @@ function build () {
     return js_template.replace('%%%HTML%%%', html_template).replace('%%%CSS%%%', css_template);
 }
 
-fs.writeFile('Popdown.js', build(), 'utf8', function (err) {
-    if (err) {console.log(err); return;}
-    console.log('Popdown.js Successfully Built');
-});
+function buildFile () {
+    var string = buildString();
+    fs.writeFile('Popdown.js', string, 'utf8', function (err) {
+        if (err) {console.log(err); return;}
+        console.log('Popdown.js File Successfully Built');
+    });
+    return string;
+}
 
-module.exports = build;
+buildFile();
+
+module.exports = {
+    buildString: buildString,
+    buildFile: buildFile,
+};

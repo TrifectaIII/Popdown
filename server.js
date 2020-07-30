@@ -1,30 +1,36 @@
 // SETUP
 ///////////////////////////////////////////////////
 
-var express = require('express'); // load express package
-var app = express(); //create express app
-var serv = require('http').Server(app); //serve http over app
+const path = require('path');
+
+const express = require('express'); // load express package
+const app = express(); //create express app
+const serv = require('http').Server(app); //serve http over app
 
 //build Popdown.js file
-const build = require(__dirname + '/build.js')
+const build = require(path.resolve(__dirname, 'build.js'));
 
 // HTTP SERVER
 ///////////////////////////////////////////////////
 
+const port = process.env.PORT || 8000; // specified port or 8k as backup
+
 //Start Server
-serv.listen(process.env.PORT || 8000); // specified port or 8k as backup
+serv.listen(port);
 
 //route main page in index
 app.get('/',function(req, res) {
-	res.sendFile(__dirname + '/client/test.html');
+	res.sendFile(path.resolve(__dirname, 'test/test.html'));
 });
 
+//send library
 app.get('/Popdown.js',function(req, res) {
-    res.send(build());
+    //change from buildFile to buildString if you dont want to acutally change the file on disk
+    res.send(build.buildFile());
 });
 
-//Serve static files
-app.use('/client',express.static(__dirname + '/client'));
+//Serve test files
+app.use('/test',express.static(path.resolve(__dirname, 'test')));
 
 
-console.log('Listening on Port:', process.env.PORT || 8000);
+console.log('Listening on Port:', port);
