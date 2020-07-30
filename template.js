@@ -6,7 +6,7 @@ Popdown.start = function () {
     Popdown._style = document.createElement('style');
 
     //fill with css
-    Popdown._style.innerHTML = '.Popdown-container { z-index: 10;}.Popdown-background { background-color: rgba(0, 0, 0, 0.5); position: fixed; top:0; bottom:0; right:0; left:0;}.Popdown-box {}.Popdown-alert .Popdown-button { background-color: red;}';
+    Popdown._style.innerHTML = '%%%CSS%%%';
 
     //add style to head
     document.head.appendChild(Popdown._style);
@@ -15,7 +15,7 @@ Popdown.start = function () {
     Popdown._div = document.createElement('div'); 
 
     //fill with html
-    Popdown._div.innerHTML = '<div class="Popdown-container"> <div class="Popdown-background"></div> <div class="Popdown-box Popdown-alert"> <p class="Popdown-message"></p> <button class="Popdown-button">OK</button> </div></div>';
+    Popdown._div.innerHTML = '%%%HTML%%%';
 
     //add div to body
     document.body.appendChild(Popdown._div);
