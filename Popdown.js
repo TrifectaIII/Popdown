@@ -12,7 +12,7 @@ Popdown.start = function () {
     //create div for HTML code
     Popdown._div = document.createElement('div'); 
     //fill with html
-    Popdown._div.innerHTML = '<div class="Popdown-container"> <div class="Popdown-background"></div> <div class="Popdown-box Popdown-alert"> <p class="Popdown-message">This is a message.</p> <button class="Popdown-button">OK</button> </div></div>';
+    Popdown._div.innerHTML = '<div class="Popdown-container"> <div class="Popdown-background"></div> <div class="Popdown-box Popdown-alert"> <p class="Popdown-message">This is an alert.</p> <button class="Popdown-button">OK</button> </div></div>';
     //add div to body
     document.body.appendChild(Popdown._div);
 
