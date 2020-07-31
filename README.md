@@ -1,11 +1,9 @@
 # Popdown
-
  Responsive, lightweight, easy-to-use alternatives for prompt(), alert(), and confirm().
  
  **NOTE: Not even close to working yet.**
 
 ## Build
-
 ```
 npm run-script build
 ```
@@ -15,7 +13,6 @@ node build.js
 ```
 
 ## Include
-
 ```
 <script src="%YOURPATH%/Popdown.js"></script>
 ```
@@ -25,7 +22,6 @@ or,if you want the minified version,
 ```
 
 ## Usage
-
 First, initalize the library.
 ```
 Popdown.start()
@@ -60,8 +56,14 @@ Example:
 ```
 Popdown.prompt('What is your name?', (response) => {console.log(response)});
 ```
+### Parameters
+| Parameter | Description                                                                                                                                                                 | Type     | Default |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|---------|
+| message   | Display text of the Popdown                                                                                                                                                 | string   | ''      |
+| callback  | Will execute when user exits the Popdown.  Popdown.confirm() callback should accept a boolean as parameter.  Popdown.prompt() callback should accept a string as parameter. | function | null    |
+| options   | Used to pass in lesser-used parameters (see below for details).                                                                                                             | object   | {}      |
 
-### options
+### Options
 | Option  | Description                            | Type           | Default |
 |---------|----------------------------------------|----------------|---------|
 | head    | Display text for header of the Popdown | string         | ""      |

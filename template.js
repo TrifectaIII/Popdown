@@ -71,6 +71,9 @@ Popdown.start = function () {
 
     Popdown._Popdown = function (type, message, callback, options) {
 
+        //if message not defined, set to enmty string
+        if (message === undefined) {message = ''};
+
         //if callback nor defined, set to null
         if (callback === undefined) {callback = null};
 
