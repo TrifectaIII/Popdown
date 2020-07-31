@@ -1,5 +1,11 @@
-body {
+/* class for body to disable scrolling when a popdown is active */
+.Popdown-noScroll {
     overflow: hidden;
+}
+
+/* class for hidden elements */
+.Popdown-noShow {
+    display:none;
 }
 
 .Popdown-container {
@@ -68,7 +74,7 @@ body {
     bottom:0;
     right: 0;
     left: 0;
-    background-color: red;
+    background-color: rgb(0, 150, 255);
     width:100%;
     height: 3rem;
     font-size: 2rem;
@@ -79,5 +85,9 @@ body {
 
 /* color for mouseover */
 .Popdown-alert .Popdown-button:hover {
-    background-color: lightcoral;
+    background-color: rgb(0, 200, 255);
+}
+
+.Popdown-alert .Popdown-button:active {
+    background-color: rgb(0, 200, 255);
 }
