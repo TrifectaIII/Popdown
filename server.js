@@ -26,13 +26,13 @@ app.get('/',function(req, res) {
 //send library
 app.get('/Popdown.js',function(req, res) {
     //change from buildFile to buildString if you dont want to acutally change the file on disk
-    res.send(build.buildFile().regular);
+    res.send(build.buildFiles().regular);
 });
 
 //send minified library
 app.get('/Popdown.min.js',function(req, res) {
     //change from buildFile to buildString if you dont want to acutally change the file on disk
-    res.send(build.buildFile().minified);
+    res.send(build.buildFiles().minified);
 });
 
 //Serve test files

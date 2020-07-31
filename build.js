@@ -23,7 +23,7 @@ function buildString () {
     return js_template.replace('%%%HTML%%%', html_min).replace('%%%CSS%%%', css_min);
 }
 
-function buildFile () {
+function buildFiles () {
 
     //build complete js string
     var string = buildString();
@@ -47,9 +47,9 @@ function buildFile () {
     };
 }
 
-buildFile();
+buildFiles();
 
 module.exports = {
     buildString: buildString,
-    buildFile: buildFile,
+    buildFiles: buildFiles,
 };
