@@ -1,17 +1,17 @@
 Popdown.start();
 
-Popdown.alert('hello')
+document.getElementById('alertButton').addEventListener('click', function () {
+    Popdown.alert('Hello!');
+})
 
-//test all three replacement functions
+document.getElementById('confirmButton').addEventListener('click', function () {
+    Popdown.confirm('See console for output', function (bool) {
+        console.log(bool)
+    })
+})
 
-// Popdown.alert("Hi!", function() {
-//     console.log('Hello!');
-// }, this);
-
-// Popdown.confirm("Hi!", function(bool) {
-//     console.log(bool);
-// }, this);
-
-// Popdown.prompt("Hi!", function(res) {
-//     console.log('Hi, '+res+'!');
-// }, this);
+document.getElementById('promptButton').addEventListener('click', function () {
+    Popdown.prompt('See console for output', function (resp) {
+        console.log(resp);
+    })
+})

@@ -167,7 +167,7 @@ Popdown.start = function () {
     Popdown._queue = [];
 
     //remove all popdowns
-    Popdown.clearAll = function () {
+    Popdown.clear = function () {
         if (Popdown._queue.length > 0) {
             Popdown._queue = [];
             Popdown._render();
@@ -205,7 +205,77 @@ Popdown.start = function () {
             //render after removal
             Popdown._render();
             //execute callback
-            alertObj.executeCallback(undefined);
+            alertObj.executeCallback();
+        }
+    });
+
+    //confirm ok button
+    Popdown._elements.confirm.okButton.addEventListener('click', function () {
+        //ensure that the top element is an alert
+        if (Popdown._queue[0].type === Popdown._Types.CONFIRM) {
+            //remove object from front of queue
+            var confirmObj = Popdown._queue.shift();
+            //render after removal
+            Popdown._render();
+            //execute callback
+            confirmObj.executeCallback(true);
+        }
+    });
+
+    //confirm cancel button
+    Popdown._elements.confirm.cancelButton.addEventListener('click', function () {
+        //ensure that the top element is an alert
+        if (Popdown._queue[0].type === Popdown._Types.CONFIRM) {
+            //remove object from front of queue
+            var confirmObj = Popdown._queue.shift();
+            //render after removal
+            Popdown._render();
+            //execute callback
+            confirmObj.executeCallback(false);
+        }
+    });
+
+    //prompt ok button
+    Popdown._elements.prompt.okButton.addEventListener('click', function () {
+        //ensure that the top element is an alert
+        if (Popdown._queue[0].type === Popdown._Types.PROMPT) {
+            //save text from input
+            var text = Popdown._elements.prompt.input.value;
+            //remove object from front of queue
+            var promptObj = Popdown._queue.shift();
+            //render after removal
+            Popdown._render();
+            //execute callback, passing through text
+            promptObj.executeCallback(text);
+        }
+    });
+
+    //prompt cancel button
+    Popdown._elements.prompt.cancelButton.addEventListener('click', function () {
+        //ensure that the top element is an alert
+        if (Popdown._queue[0].type === Popdown._Types.PROMPT) {
+            //remove object from front of queue
+            var promptObj = Popdown._queue.shift();
+            //render after removal
+            Popdown._render();
+            //execute callback, with null as param
+            promptObj.executeCallback(null);
+        }
+    });
+
+    //prompt input enter press
+    Popdown._elements.prompt.input.addEventListener('keypress', function (event) {
+        //ensure that the top element is an alert and that the enter key is pressed
+        if (event.keyCode === 13 &&
+            Popdown._queue[0].type === Popdown._Types.PROMPT) {
+            //save text from input
+            var text = Popdown._elements.prompt.input.value;
+            //remove object from front of queue
+            var promptObj = Popdown._queue.shift();
+            //render after removal
+            Popdown._render();
+            //execute callback, passing through text
+            promptObj.executeCallback(text);
         }
     });
 
