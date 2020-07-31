@@ -205,7 +205,7 @@ Popdown.start = function () {
             //render after removal
             Popdown._render();
             //execute callback
-            alertObj.executeCallback(undefined);
+            alertObj.executeCallback();
         }
     });
 
