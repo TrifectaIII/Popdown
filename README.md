@@ -1,9 +1,11 @@
 # Popdown
+
  Responsive, lightweight, easy-to-use alternatives for prompt(), alert(), and confirm().
  
  **NOTE: Not even close to working yet.**
 
 ## Build
+
 ```
 npm run-script build
 ```
@@ -13,11 +15,17 @@ node build.js
 ```
 
 ## Include
+
 ```
 <script src="%YOURPATH%/Popdown.js"></script>
 ```
+or,if you want the minified version,
+```
+<script src="%YOURPATH%/Popdown.min.js"></script>
+```
 
 ## Usage
+
 First, initalize the library.
 ```
 Popdown.start()
