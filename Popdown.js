@@ -1,13 +1,18 @@
+// Global Object
 Popdown = {};
 
+// Initialization Function, must be called before anything else happens
 Popdown.start = function () {
 
     //enum for Popdown types
-    Popdown.Types = Object.freeze({
+    Popdown._Types = Object.freeze({
         ALERT: 'alert',
         CONFIRM: 'confirm',
         PROMPT: 'prompt',
     });
+
+    //INSERT HTML AND CSS CODE TO DOCUMENT
+    /////////////////////////////////////////////////////
 
     //create style element
     Popdown._style = document.createElement('style');
@@ -19,12 +24,14 @@ Popdown.start = function () {
     //create div for HTML code
     Popdown._div = document.createElement('div'); 
     //fill with html
-    Popdown._div.innerHTML = '<div class="Popdown-container Popdown-noShow"><div class="Popdown-background"></div><div class="Popdown-box-container"><div class="Popdown-box Popdown-alert"><h2 class="Popdown-header">An Alert</h2><p class="Popdown-message">This is an alert.</p><button class="Popdown-button Popdown-alert-ok-button">OK</button></div><div class="Popdown-box Popdown-confirm"><h2 class="Popdown-header">A Confirm</h2><p class="Popdown-message">This is a confirm.</p><button class="Popdown-button Popdown-confirm-cancel-button">CANCEL</button> <button class="Popdown-button Popdown-confirm-ok-button">OK</button></div><div class="Popdown-box Popdown-prompt"><h2 class="Popdown-header">A Prompt</h2><p class="Popdown-message">This is a prompt.</p><input class="Popdown-input Popdown-prompt-input" type="text"> <button class="Popdown-button Popdown-prompt-cancel-button">CANCEL</button> <button class="Popdown-button Popdown-prompt-ok-button">OK</button></div></div></div>';
+    Popdown._div.innerHTML = '<div class="Popdown-container Popdown-noShow"><div class="Popdown-background"></div><div class="Popdown-box-container"><div class="Popdown-box Popdown-alert"><h2 class="Popdown-header">An Alert</h2><p class="Popdown-message">This is an alert.</p><button class="Popdown-button Popdown-alert-ok-button">OK</button></div><div class="Popdown-box Popdown-confirm"><h2 class="Popdown-header">A Confirm</h2><p class="Popdown-message">This is a confirm.</p><button class="Popdown-button Popdown-confirm-cancel-button">CANCEL</button><button class="Popdown-button Popdown-confirm-ok-button">OK</button></div><div class="Popdown-box Popdown-prompt"><h2 class="Popdown-header">A Prompt</h2><p class="Popdown-message">This is a prompt.</p><input class="Popdown-input Popdown-prompt-input" type="text"><button class="Popdown-button Popdown-prompt-cancel-button">CANCEL</button><button class="Popdown-button Popdown-prompt-ok-button">OK</button></div></div></div>';
     //add div to body
     document.body.appendChild(Popdown._div);
 
-    //get elements from inserted html
-    Popdown.elements = {
+    //REFERENCE HTML ELEMENTS 
+    /////////////////////////////////////////////////////
+
+    Popdown._elements = {
 
         //shared elements
         container: document.body.querySelector('.Popdown-container'),
@@ -32,131 +39,201 @@ Popdown.start = function () {
         boxContainer: document.body.querySelector('.Popdown-box-container'),
 
         //alert elements
-        alertBox: document.body.querySelector('.Popdown-box.Popdown-alert'),
-        alertHeader: document.body.querySelector('.Popdown-alert .Popdown-header'),
-        alertMessage: document.body.querySelector('.Popdown-alert .Popdown-message'),
-        alertOkButton: document.body.querySelector('.Popdown-alert-ok-button'),
+        alert: {
+            box: document.body.querySelector('.Popdown-box.Popdown-alert'),
+            header: document.body.querySelector('.Popdown-alert .Popdown-header'),
+            message: document.body.querySelector('.Popdown-alert .Popdown-message'),
+            okButton: document.body.querySelector('.Popdown-alert-ok-button'),
+        },
 
         //confirm elements
-        confirmBox: document.body.querySelector('.Popdown-box.Popdown-confirm'),
-        confirmHeader: document.body.querySelector('.Popdown-confirm .Popdown-header'),
-        confirmMessage: document.body.querySelector('.Popdown-confirm .Popdown-message'),
-        confirmOkButton: document.body.querySelector('.Popdown-confirm-ok-button'),
-        confirmCancelButton: document.body.querySelector('.Popdown-confirm-cancel-button'),
+        confirm: {
+            box: document.body.querySelector('.Popdown-box.Popdown-confirm'),
+            header: document.body.querySelector('.Popdown-confirm .Popdown-header'),
+            message: document.body.querySelector('.Popdown-confirm .Popdown-message'),
+            okButton: document.body.querySelector('.Popdown-confirm-ok-button'),
+            cancelButton: document.body.querySelector('.Popdown-confirm-cancel-button'),
+        },
 
         //prompt elements
-        promptBox: document.body.querySelector('.Popdown-box.Popdown-prompt'),
-        promptHeader: document.body.querySelector('.Popdown-prompt .Popdown-header'),
-        promptMessage: document.body.querySelector('.Popdown-prompt .Popdown-message'),
-        promptOkButton: document.body.querySelector('.Popdown-prompt-ok-button'),
-        promptCancelButton: document.body.querySelector('.Popdown-prompt-cancel-button'),
-        promptInput: document.body.querySelector('.Popdown-prompt-input'),
+        prompt: {
+            box: document.body.querySelector('.Popdown-box.Popdown-prompt'),
+            header: document.body.querySelector('.Popdown-prompt .Popdown-header'),
+            message: document.body.querySelector('.Popdown-prompt .Popdown-message'),
+            okButton: document.body.querySelector('.Popdown-prompt-ok-button'),
+            cancelButton: document.body.querySelector('.Popdown-prompt-cancel-button'),
+            input: document.body.querySelector('.Popdown-prompt-input'),
+        },
     };
 
-    //object constructor for individual popdowns
-    Popdown._Popdown = function (type, head, message, callback, context) {
+    //OBJECT CONSTRUCTOR FOR INDIVIDUAL POPDOWNS
+    /////////////////////////////////////////////////////
+
+    Popdown._Popdown = function (type, message, options) {
+
+        //if options not defined, create empty object
+        if (options === undefined){options = {}};
+
+        //options defaults
+        var defaults = {
+            //text for header of box
+            head: '',
+            //callback function
+            callback: null,
+            //context for callback
+            context: null,
+        }
+
+        //place default options if not specified
+        for (var option in defaults) {
+            if (options[option] === undefined) {
+                options[option] = defaults[option];
+            }
+        }
+
         this.type = type;
-        this.head = head;
         this.message = message;
-        this.callback = callback;
-        this.context = context;
+        this.options = options;
     }
+
+    //method to render the individual popdown
+    Popdown._Popdown.prototype.render = function () {
+
+        //render based on type
+        switch (this.type) {
+
+            //render alert
+            case Popdown._Types.ALERT:
+                //fill text elements
+                Popdown._elements.alert.header.innerText = this.options.head;
+                Popdown._elements.alert.message.innerText = this.message;
+
+                //hide other boxes
+                Popdown._elements.confirm.box.classList.add('Popdown-noShow');
+                Popdown._elements.prompt.box.classList.add('Popdown-noShow');
+
+                //show alert box
+                Popdown._elements.alert.box.classList.remove('Popdown-noShow');
+                break
+
+            //render confirm
+            case Popdown._Types.CONFIRM:
+                //fill text elements
+                Popdown._elements.confirm.header.innerText = this.options.head;
+                Popdown._elements.confirm.message.innerText = this.message;
+
+                //hide other boxes
+                Popdown._elements.alert.box.classList.add('Popdown-noShow');
+                Popdown._elements.prompt.box.classList.add('Popdown-noShow');
+
+                //show confirm box
+                Popdown._elements.confirm.box.classList.remove('Popdown-noShow');
+                break
+
+            //render prompt
+            case Popdown._Types.PROMPT:
+                //fill text elements
+                Popdown._elements.prompt.header.innerText = this.options.head;
+                Popdown._elements.prompt.message.innerText = this.message;
+
+                //clear input
+                Popdown._elements.prompt.input.value = '';
+
+                //hide other boxes
+                Popdown._elements.alert.box.classList.add('Popdown-noShow');
+                Popdown._elements.confirm.box.classList.add('Popdown-noShow');
+
+                //show prompt box
+                Popdown._elements.prompt.box.classList.remove('Popdown-noShow');
+                break
+        }
+    }
+
+    //executes callback function
+    Popdown._Popdown.prototype.executeCallback = function (argument) {
+        if (this.options.callback !== null){
+            if (this.options.context !== null) {
+                this.options.callback.bind(this.options.context)(argument);
+            }
+            else {
+                this.options.callback(argument);
+            }
+        }
+    }
+
+    //QUEUE TO HOLD ALL ACTIVE POPDOWNS
+    /////////////////////////////////////////////////////
 
     Popdown._queue = [];
 
     //remove all popdowns
     Popdown.clearAll = function () {
-        Popdown._queue = [];
+        if (Popdown._queue.length > 0) {
+            Popdown._queue = [];
+            Popdown._render();
+        }
     }
+
+    //RENDERS TOP POPDOWN
+    /////////////////////////////////////////////////////
 
     Popdown._render = function () {
 
-        //hide popdown and enable body scrolling 
+        //hide popdown and enable body scrolling when no active popdowns
         if (Popdown._queue.length === 0) {
-            Popdown.elements.container.classList.add('Popdown-noShow');
+            Popdown._elements.container.classList.add('Popdown-noShow');
             document.body.classList.remove('Popdown-noScroll');
         }
-        //render alert
-        else if (Popdown._queue[0].type === Popdown.Types.ALERT) {
-
-            //fill text elements
-            Popdown.elements.alertHeader.innerText = Popdown._queue[0].head;
-            Popdown.elements.alertMessage.innerText = Popdown._queue[0].message;
-
-            //hide other boxes
-            Popdown.elements.confirmBox.classList.add('Popdown-noShow');
-            Popdown.elements.promptBox.classList.add('Popdown-noShow');
-
-            //show alert box
-            Popdown.elements.alertBox.classList.remove('Popdown-noShow');
-
+        //render next popdown otherwise
+        else {
+            Popdown._queue[0].render();
             //show popdown and disable body scrolling
-            Popdown.elements.container.classList.remove('Popdown-noShow');
-            document.body.classList.add('Popdown-noScroll');
-        }
-        //render confirm
-        else if (Popdown._queue[0].type === Popdown.Types.CONFIRM) {
-
-            //fill text elements
-            Popdown.elements.confirmHeader.innerText = Popdown._queue[0].head;
-            Popdown.elements.confirmMessage.innerText = Popdown._queue[0].message;
-
-            //hide other boxes
-            Popdown.elements.alertBox.classList.add('Popdown-noShow');
-            Popdown.elements.promptBox.classList.add('Popdown-noShow');
-
-            //show alert box
-            Popdown.elements.confirmBox.classList.remove('Popdown-noShow');
-
-            //show popdown and disable body scrolling
-            Popdown.elements.container.classList.remove('Popdown-noShow');
-            document.body.classList.add('Popdown-noScroll');
-        }
-        //render prompt
-        else if (Popdown._queue[0].type === Popdown.Types.PROMPT) {
-
-            //fill text elements
-            Popdown.elements.promptHeader.innerText = Popdown._queue[0].head;
-            Popdown.elements.promptMessage.innerText = Popdown._queue[0].message;
-
-            //clear input
-            Popdown.elements.promptInput.value = '';
-
-            //hide other boxes
-            Popdown.elements.alertBox.classList.add('Popdown-noShow');
-            Popdown.elements.confirmBox.classList.add('Popdown-noShow');
-
-            //show alert box
-            Popdown.elements.promptBox.classList.remove('Popdown-noShow');
-
-            //show popdown and disable body scrolling
-            Popdown.elements.container.classList.remove('Popdown-noShow');
+            Popdown._elements.container.classList.remove('Popdown-noShow');
             document.body.classList.add('Popdown-noScroll');
         }
     }
 
-    //ADD EVENT LISTENERS HERE
+    //EVENT LISTENERS FOR POPDOWN ELEMENTS
+    /////////////////////////////////////////////////////
 
-    //should present the user with info and allow them to close
-    Popdown.alert = function (head, message, callback, context) {
-        Popdown._queue.push(new Popdown._Popdown(Popdown.Types.ALERT, head, message, callback, context));
-        if (Popdown._queue.length === 1) {
+    //alert ok button
+    Popdown._elements.alert.okButton.addEventListener('click', function () {
+        //ensure that the top element is an alert
+        if (Popdown._queue[0].type === Popdown._Types.ALERT) {
+            //remove object from front of queue
+            var alertObj = Popdown._queue.shift();
+            //render after removal
             Popdown._render();
+            //execute callback
+            alertObj.executeCallback();
         }
-        
-    }
+    });
 
-    //should present the user with info and allow them to select a positive or negative response
-    Popdown.confirm = function (head, message, callback, context) {
-        Popdown._queue.push(new Popdown._Popdown(Popdown.Types.CONFIRM, head, message, callback, context));
+    //FUNCTIONS TO CREATE POPDOWNS
+    /////////////////////////////////////////////////////
+
+    //present the user with info and allow them to close
+    Popdown.alert = function (message, options) {
+        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.ALERT, message, options));
+        //render if the new popdown is on top
         if (Popdown._queue.length === 1) {
             Popdown._render();
         }
     }
 
-    //should present the user with a query and allow for a written response, with optional "cancel" option
-    Popdown.prompt = function (head, message, callback, context) {
-        Popdown._queue.push(new Popdown._Popdown(Popdown.Types.PROMPT, head, message, callback, context));
+    //present the user with info and allow them to select a positive or negative response
+    Popdown.confirm = function (message, options) {
+        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.CONFIRM, message, options));
+        //render if the new popdown is on top
+        if (Popdown._queue.length === 1) {
+            Popdown._render();
+        }
+    }
+
+    //present the user with a query and allow for a written response, with optional "cancel" option
+    Popdown.prompt = function (message, options) {
+        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.PROMPT, message, options));
+        //render if the new popdown is on top
         if (Popdown._queue.length === 1) {
             Popdown._render();
         }

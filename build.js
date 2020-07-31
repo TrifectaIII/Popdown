@@ -12,6 +12,11 @@ function buildString () {
     //read and minify html
     const html_min = HTMLminifier.minify(fs.readFileSync(path.resolve(__dirname, 'template.html'), 'utf8'), {
         collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        quoteCharacter: '"',
+        removeComments: true,
+        sortAttributes: true,
+        sortClassName: true,
     });
     
     //read and muinify css

@@ -8,9 +8,12 @@
     display:none;
 }
 
+/* top level container */
 .Popdown-container {
+
     /* display on top of  normal page*/
     z-index: 1;
+
     text-align: center;
     position: fixed;
     top: 0;

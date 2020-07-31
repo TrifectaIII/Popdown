@@ -1,5 +1,7 @@
 Popdown.start();
 
+Popdown.alert('hello')
+
 //test all three replacement functions
 
 // Popdown.alert("Hi!", function() {

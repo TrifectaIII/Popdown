@@ -26,29 +26,35 @@ Popdown.start()
 ### Popdown.alert()
 Syntax:
 ```
-Popdown.alert(message, callback, context);
+Popdown.alert(message, callback, options);
 ```
 Example:
 ```
-Popdown.alert('Hi!', () => {console.log('Hello!')}, this)
+Popdown.alert('Hi!', () => {console.log('Hello!')});
 ```
 
 ### Popdown.confirm()
 Syntax:
 ```
-Popdown.confirm(message, callback, context);
+Popdown.confirm(message, callback, options);
 ```
 Example:
 ```
-Popdown.confirm('Do you like green eggs and ham?', (bool) => {console.log(bool)}, this)
+Popdown.confirm('Do you like green eggs and ham?', (bool) => {console.log(bool));
 ```
 
 ### Popdown.prompt()
 Syntax:
 ```
-Popdown.prompt(message, callback, context);
+Popdown.prompt(message, callback, options);
 ```
 Example:
 ```
-Popdown.prompt('What is your name?', (response) => {console.log(response)}, this)
+Popdown.prompt('What is your name?', (response) => {console.log(response)});
 ```
+
+### options
+| Option  | Description                            | Type           | Default |
+|---------|----------------------------------------|----------------|---------|
+| head    | Display text for header of the Popdown | string         | ""      |
+| context | Context for callback execution         | object/context | null    |
