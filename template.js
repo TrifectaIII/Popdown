@@ -119,6 +119,9 @@ Popdown.start = function () {
             Popdown.elements.promptHeader.innerText = Popdown._queue[0].head;
             Popdown.elements.promptMessage.innerText = Popdown._queue[0].message;
 
+            //clear input
+            Popdown.elements.promptInput.value = '';
+
             //hide other boxes
             Popdown.elements.alertBox.classList.add('Popdown-noShow');
             Popdown.elements.confirmBox.classList.add('Popdown-noShow');
