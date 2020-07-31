@@ -16,7 +16,7 @@ node build.js
 ```
 <script src="%YOURPATH%/Popdown.js"></script>
 ```
-or,if you want the minified version,
+or, if you want the minified version,
 ```
 <script src="%YOURPATH%/Popdown.min.js"></script>
 ```
