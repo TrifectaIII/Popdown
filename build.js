@@ -7,10 +7,10 @@ const UglifyCSS = require('uglifycss');
 
 function buildString () {
     //read templates in as strings
-    const js_template = fs.readFileSync(path.resolve(__dirname, 'template.js'), 'utf8');
+    const js_template = fs.readFileSync(path.resolve(__dirname, 'src/source.js'), 'utf8');
     
     //read and minify html
-    const html_min = HTMLminifier.minify(fs.readFileSync(path.resolve(__dirname, 'template.html'), 'utf8'), {
+    const html_min = HTMLminifier.minify(fs.readFileSync(path.resolve(__dirname, 'src/source.html'), 'utf8'), {
         collapseWhitespace: true,
         collapseInlineTagWhitespace: true,
         quoteCharacter: '"',
@@ -20,9 +20,7 @@ function buildString () {
     });
     
     //read and muinify css
-    const css_min = UglifyCSS.processString(fs.readFileSync(path.resolve(__dirname, 'template.css'), 'utf8'), {
-
-    });
+    const css_min = UglifyCSS.processString(fs.readFileSync(path.resolve(__dirname, 'src/source.css'), 'utf8'), {});
 
     //insert css and html into js
     return js_template.replace('%%%HTML%%%', html_min).replace('%%%CSS%%%', css_min);
@@ -52,8 +50,11 @@ function buildFiles () {
     };
 }
 
+//build all files
 buildFiles();
 
+
+//export functions
 module.exports = {
     buildString: buildString,
     buildFiles: buildFiles,

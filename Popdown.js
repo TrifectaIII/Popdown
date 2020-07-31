@@ -69,7 +69,13 @@ Popdown.start = function () {
     //OBJECT CONSTRUCTOR FOR INDIVIDUAL POPDOWNS
     /////////////////////////////////////////////////////
 
-    Popdown._Popdown = function (type, message, options) {
+    Popdown._Popdown = function (type, message, callback, options) {
+
+        //if message not defined, set to enmty string
+        if (message === undefined) {message = ''};
+
+        //if callback nor defined, set to null
+        if (callback === undefined) {callback = null};
 
         //if options not defined, create empty object
         if (options === undefined){options = {}};
@@ -78,8 +84,6 @@ Popdown.start = function () {
         var defaults = {
             //text for header of box
             head: '',
-            //callback function
-            callback: null,
             //context for callback
             context: null,
         }
@@ -93,6 +97,7 @@ Popdown.start = function () {
 
         this.type = type;
         this.message = message;
+        this.callback = callback;
         this.options = options;
     }
 
@@ -151,13 +156,8 @@ Popdown.start = function () {
 
     //executes callback function
     Popdown._Popdown.prototype.executeCallback = function (argument) {
-        if (this.options.callback !== null){
-            if (this.options.context !== null) {
-                this.options.callback.bind(this.options.context)(argument);
-            }
-            else {
-                this.options.callback(argument);
-            }
+        if (this.callback !== null){
+            this.callback.bind(this.options.context)(argument);
         }
     }
 
@@ -205,7 +205,7 @@ Popdown.start = function () {
             //render after removal
             Popdown._render();
             //execute callback
-            alertObj.executeCallback();
+            alertObj.executeCallback(undefined);
         }
     });
 
@@ -213,8 +213,8 @@ Popdown.start = function () {
     /////////////////////////////////////////////////////
 
     //present the user with info and allow them to close
-    Popdown.alert = function (message, options) {
-        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.ALERT, message, options));
+    Popdown.alert = function (message, callback, options) {
+        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.ALERT, message, callback, options));
         //render if the new popdown is on top
         if (Popdown._queue.length === 1) {
             Popdown._render();
@@ -222,8 +222,8 @@ Popdown.start = function () {
     }
 
     //present the user with info and allow them to select a positive or negative response
-    Popdown.confirm = function (message, options) {
-        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.CONFIRM, message, options));
+    Popdown.confirm = function (message, callback, options) {
+        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.CONFIRM, message, callback, options));
         //render if the new popdown is on top
         if (Popdown._queue.length === 1) {
             Popdown._render();
@@ -231,8 +231,8 @@ Popdown.start = function () {
     }
 
     //present the user with a query and allow for a written response, with optional "cancel" option
-    Popdown.prompt = function (message, options) {
-        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.PROMPT, message, options));
+    Popdown.prompt = function (message, callback, options) {
+        Popdown._queue.push(new Popdown._Popdown(Popdown._Types.PROMPT, message, callback, options));
         //render if the new popdown is on top
         if (Popdown._queue.length === 1) {
             Popdown._render();
