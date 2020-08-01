@@ -44,7 +44,7 @@ Popdown.confirm(message, callback, options);
 ```
 Example:
 ```
-Popdown.confirm('Do you like green eggs and ham?', (bool) => {console.log(bool));
+Popdown.confirm('Do you like green eggs and ham?', (bool) => {console.log(bool)});
 ```
 
 ### Popdown.prompt()
