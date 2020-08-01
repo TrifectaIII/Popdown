@@ -61,7 +61,7 @@ Popdown.prompt('What is your name?', (response) => {console.log(response)});
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|---------|
 | message   | Display text of the Popdown                                                                                                                                                 | string   | ""      |
 | callback  | Will execute when user exits the Popdown.  Popdown.confirm() callback should accept a boolean as parameter.  Popdown.prompt() callback should accept a string as parameter. | function | null    |
-| options   | Used to pass in lesser-used parameters (see below for details).                                                                                                             | object   | {}      |
+| options   | Used to pass in lesser-used parameters (see below for details).                                                                                                             | object   | { }     |
 
 ### Options
 | Option  | Description                            | Type           | Default |
