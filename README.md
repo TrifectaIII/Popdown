@@ -1,5 +1,5 @@
 # Popdown
- Responsive, lightweight, easy-to-use alternatives for prompt(), alert(), and confirm().
+ Responsive, lightweight, easy-to-use alternatives for `prompt()`, `alert()`, and `confirm()`.
  
  **NOTE: Not even close to working yet.**
 
