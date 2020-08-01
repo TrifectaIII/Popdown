@@ -27,7 +27,7 @@ First, initalize the library.
 Popdown.start()
 ```
 
-### Popdown.alert()
+### `Popdown.alert()`
 Syntax:
 ```
 Popdown.alert(message, callback, options);
@@ -37,7 +37,7 @@ Example:
 Popdown.alert('Hi!', () => {console.log('Hello!')});
 ```
 
-### Popdown.confirm()
+### `Popdown.confirm()`
 Syntax:
 ```
 Popdown.confirm(message, callback, options);
@@ -47,7 +47,7 @@ Example:
 Popdown.confirm('Do you like green eggs and ham?', (bool) => {console.log(bool)});
 ```
 
-### Popdown.prompt()
+### `Popdown.prompt()`
 Syntax:
 ```
 Popdown.prompt(message, callback, options);
