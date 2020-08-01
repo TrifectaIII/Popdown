@@ -1,23 +1,34 @@
-<div class='Popdown-container Popdown-noShow'>
-    <div class='Popdown-background'></div>
-    <div class='Popdown-box-container'>
-        <div class='Popdown-box Popdown-alert'>
+<!-- this will all be contained in a top level Popdown-container class -->
+<div class='Popdown-background'></div>
+<div class='Popdown-box-container'>
+    <div class='Popdown-box Popdown-alert'>
+        <div class='Popdown-info'>
+            <h2 class='Popdown-header'></h2>
+            <p class='Popdown-message'></p>
+        </div>
+        <div class='Popdown-buttons'>
+            <button class='Popdown-button Popdown-ok Popdown-button-full'>OK</button>
+        </div>
+    </div>
+    <div class='Popdown-box Popdown-confirm'>
+        <div class='Popdown-info'>
+            <h2 class='Popdown-header'></h2>
+            <p class='Popdown-message'></p>
+        </div>
+        <div class='Popdown-buttons'>
+            <button class='Popdown-button Popdown-cancel Popdown-button-left'>CANCEL</button>
+            <button class='Popdown-button Popdown-ok Popdown-button-right'>OK</button>
+        </div>
+    </div>
+    <div class='Popdown-box Popdown-prompt'>
+        <div class='Popdown-info'>
             <h2 class='Popdown-header'>An Alert</h2>
             <p class='Popdown-message'>This is an alert.</p>
-            <button class='Popdown-button Popdown-alert-ok-button'>OK</button>
         </div>
-        <div class='Popdown-box Popdown-confirm'>
-            <h2 class='Popdown-header'>A Confirm</h2>
-            <p class='Popdown-message'>This is a confirm.</p>
-            <button class='Popdown-button Popdown-confirm-cancel-button'>CANCEL</button>
-            <button class='Popdown-button Popdown-confirm-ok-button'>OK</button>
-        </div>
-        <div class='Popdown-box Popdown-prompt'>
-            <h2 class='Popdown-header'>A Prompt</h2>
-            <p class='Popdown-message'>This is a prompt.</p>
-            <input class='Popdown-input Popdown-prompt-input' type='text'>
-            <button class='Popdown-button Popdown-prompt-cancel-button'>CANCEL</button>
-            <button class='Popdown-button Popdown-prompt-ok-button'>OK</button>
+        <input class='Popdown-input' type='text'>
+        <div class='Popdown-buttons'>
+            <button class='Popdown-button Popdown-cancel Popdown-button-left'>CANCEL</button>
+            <button class='Popdown-button Popdown-ok Popdown-button-right'>OK</button>
         </div>
     </div>
 </div>

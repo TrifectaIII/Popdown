@@ -17,14 +17,18 @@ Popdown.start = function () {
     //create style element
     Popdown._style = document.createElement('style');
     //fill with css
-    Popdown._style.innerHTML = '.Popdown-noScroll{overflow:hidden}.Popdown-noShow{display:none}.Popdown-container{z-index:1;text-align:center;position:fixed;top:0;bottom:0;right:0;left:0}.Popdown-container .Popdown-background{background-color:rgba(0,0,0,0.5);position:fixed;top:0;bottom:0;right:0;left:0}.Popdown-container .Popdown-box-container{position:fixed;top:0;bottom:0;right:0;left:0;height:100%;width:100%;display:flex;flex-direction:column;align-items:center;overflow-y:auto}.Popdown-container .Popdown-box-container .Popdown-box{position:relative;max-width:80%;background-color:white;margin:2em 0;border-radius:.5rem}.Popdown-header{font-family:sans-serif}.Popdown-message{margin:2rem;margin-bottom:5rem;font-family:sans-serif}.Popdown-button{color:white}.Popdown-alert .Popdown-button{position:absolute;bottom:0;right:0;left:0;background-color:#0096ff;width:100%;height:3rem;font-size:2rem;border:0;border-radius:0 0 .5rem .5rem;outline:0}.Popdown-alert .Popdown-button:hover{background-color:#00c8ff}.Popdown-alert .Popdown-button:active{background-color:#00c8ff}';
+    Popdown._style.innerHTML = '.Popdown-noScroll{overflow:hidden}.Popdown-noShow{display:none !important}.Popdown-container{z-index:1;text-align:center;position:fixed;top:0;bottom:0;right:0;left:0;font-family:sans-serif}.Popdown-container .Popdown-background{background-color:rgba(0,0,0,0.5);position:fixed;top:0;bottom:0;right:0;left:0}.Popdown-container .Popdown-box-container{position:fixed;top:0;bottom:0;right:0;left:0;height:100%;width:100%;display:flex;flex-direction:column;align-items:center;overflow-y:auto}.Popdown-container .Popdown-box{position:relative;width:33%;background-color:white;margin:2em 0;border-radius:10px}@media(max-width:1200px){.Popdown-container .Popdown-box{width:50%}}@media(max-width:650px){.Popdown-container .Popdown-box{width:80%}}.Popdown-container .Popdown-message{margin:2rem}.Popdown-buttons{width:100%;height:3rem}.Popdown-container .Popdown-button{color:white;font-size:2em;border:0;outline:0}.Popdown-container .Popdown-button-full{width:100%;height:100%;border-radius:0 0 10px 10px}.Popdown-container .Popdown-button-right{width:50%;height:100%;border-radius:0 0 10px 0}.Popdown-container .Popdown-button-left{width:50%;height:100%;border-radius:0 0 0 10px}.Popdown-container .Popdown-ok{background-color:#0096ff}.Popdown-container .Popdown-ok:hover{background-color:#4be1ff}.Popdown-container .Popdown-cancel{background-color:red}.Popdown-container .Popdown-cancel:hover{background-color:#ff4b4b}.Popdown-container .Popdown-input{box-sizing:border-box;width:100%;margin:0;padding:0}';
     //add style to head
     document.head.appendChild(Popdown._style);
 
     //create div for HTML code
     Popdown._div = document.createElement('div'); 
+    //give div the top-level classes
+    Popdown._div.classList.add('Popdown-container');
+    //start hidden
+    Popdown._div.classList.add('Popdown-noShow');
     //fill with html
-    Popdown._div.innerHTML = '<div class="Popdown-container Popdown-noShow"><div class="Popdown-background"></div><div class="Popdown-box-container"><div class="Popdown-box Popdown-alert"><h2 class="Popdown-header">An Alert</h2><p class="Popdown-message">This is an alert.</p><button class="Popdown-button Popdown-alert-ok-button">OK</button></div><div class="Popdown-box Popdown-confirm"><h2 class="Popdown-header">A Confirm</h2><p class="Popdown-message">This is a confirm.</p><button class="Popdown-button Popdown-confirm-cancel-button">CANCEL</button><button class="Popdown-button Popdown-confirm-ok-button">OK</button></div><div class="Popdown-box Popdown-prompt"><h2 class="Popdown-header">A Prompt</h2><p class="Popdown-message">This is a prompt.</p><input class="Popdown-input Popdown-prompt-input" type="text"><button class="Popdown-button Popdown-prompt-cancel-button">CANCEL</button><button class="Popdown-button Popdown-prompt-ok-button">OK</button></div></div></div>';
+    Popdown._div.innerHTML = '<div class="Popdown-background"></div><div class="Popdown-box-container"><div class="Popdown-box Popdown-alert"><div class="Popdown-info"><h2 class="Popdown-header"></h2><p class="Popdown-message"></p></div><div class="Popdown-buttons"><button class="Popdown-button Popdown-ok Popdown-button-full">OK</button></div></div><div class="Popdown-box Popdown-confirm"><div class="Popdown-info"><h2 class="Popdown-header"></h2><p class="Popdown-message"></p></div><div class="Popdown-buttons"><button class="Popdown-button Popdown-button-left Popdown-cancel">CANCEL</button><button class="Popdown-button Popdown-ok Popdown-button-right">OK</button></div></div><div class="Popdown-box Popdown-prompt"><div class="Popdown-info"><h2 class="Popdown-header">An Alert</h2><p class="Popdown-message">This is an alert.</p></div><input class="Popdown-input" type="text"><div class="Popdown-buttons"><button class="Popdown-button Popdown-button-left Popdown-cancel">CANCEL</button><button class="Popdown-button Popdown-ok Popdown-button-right">OK</button></div></div></div>';
     //add div to body
     document.body.appendChild(Popdown._div);
 
@@ -43,7 +47,7 @@ Popdown.start = function () {
             box: document.body.querySelector('.Popdown-box.Popdown-alert'),
             header: document.body.querySelector('.Popdown-alert .Popdown-header'),
             message: document.body.querySelector('.Popdown-alert .Popdown-message'),
-            okButton: document.body.querySelector('.Popdown-alert-ok-button'),
+            okButton: document.body.querySelector('.Popdown-alert .Popdown-ok'),
         },
 
         //confirm elements
@@ -51,8 +55,8 @@ Popdown.start = function () {
             box: document.body.querySelector('.Popdown-box.Popdown-confirm'),
             header: document.body.querySelector('.Popdown-confirm .Popdown-header'),
             message: document.body.querySelector('.Popdown-confirm .Popdown-message'),
-            okButton: document.body.querySelector('.Popdown-confirm-ok-button'),
-            cancelButton: document.body.querySelector('.Popdown-confirm-cancel-button'),
+            okButton: document.body.querySelector('.Popdown-confirm .Popdown-ok'),
+            cancelButton: document.body.querySelector('.Popdown-confirm .Popdown-cancel'),
         },
 
         //prompt elements
@@ -60,9 +64,9 @@ Popdown.start = function () {
             box: document.body.querySelector('.Popdown-box.Popdown-prompt'),
             header: document.body.querySelector('.Popdown-prompt .Popdown-header'),
             message: document.body.querySelector('.Popdown-prompt .Popdown-message'),
-            okButton: document.body.querySelector('.Popdown-prompt-ok-button'),
-            cancelButton: document.body.querySelector('.Popdown-prompt-cancel-button'),
-            input: document.body.querySelector('.Popdown-prompt-input'),
+            okButton: document.body.querySelector('.Popdown-prompt .Popdown-ok'),
+            cancelButton: document.body.querySelector('.Popdown-prompt .Popdown-cancel'),
+            input: document.body.querySelector('.Popdown-prompt .Popdown-input'),
         },
     };
 

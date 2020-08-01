@@ -1,10 +1,13 @@
 const fs = require('fs');
 const path = require('path');
+
+//minify modules
 const UglifyJS = require('uglify-js');
 const HTMLminifier = require('html-minifier');
 const UglifyCSS = require('uglifycss');
 
 
+//read scource files and build js string
 function buildString () {
     //read templates in as strings
     const js_template = fs.readFileSync(path.resolve(__dirname, 'src/source.js'), 'utf8');
@@ -26,6 +29,8 @@ function buildString () {
     return js_template.replace('%%%HTML%%%', html_min).replace('%%%CSS%%%', css_min);
 }
 
+
+//create Popdown.js and Popdown.min.js
 function buildFiles () {
 
     //build complete js string
@@ -49,6 +54,7 @@ function buildFiles () {
         minified: minResult.code,
     };
 }
+
 
 //build all files
 buildFiles();

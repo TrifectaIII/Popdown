@@ -5,7 +5,7 @@
 
 /* class for hidden elements */
 .Popdown-noShow {
-    display:none;
+    display:none!important;
 }
 
 /* top level container */
@@ -20,6 +20,8 @@
     bottom: 0;
     right: 0;
     left: 0;
+
+    font-family: sans-serif;
 }
 
 /* semi-transparent background on top of main page to bring user focus to the popdown */
@@ -48,49 +50,97 @@
 }
 
 /* main popdown box */
-.Popdown-container .Popdown-box-container .Popdown-box {
+.Popdown-container .Popdown-box {
     position: relative;
-    max-width: 80%;
+    width: 33%;
     background-color: white;
     margin: 2em 0em;
-    border-radius: 0.5rem;
+    border-radius: 10px;
 }
 
-.Popdown-header {
-    font-family: sans-serif;
+/* take a larger portion of the screen at 1200px */
+@media (max-width: 1200px) {
+    .Popdown-container .Popdown-box {
+        width: 50%;
+    }
+}
+/* even larger portion at 650px */
+@media (max-width: 650px) {
+    .Popdown-container .Popdown-box {
+        width: 80%;
+    }
 }
 
-.Popdown-message {
+/* div for header and message + */
+.Popdown-container .Popdown-info {
+    
+}
+
+/* header of a popdown */
+.Popdown-container .Popdown-header {
+    
+}
+
+/* message if a popdown */
+.Popdown-container .Popdown-message {
     margin: 2rem;
-    margin-bottom: 5rem;
-    font-family: sans-serif;
+}
+
+/* div for buttons */
+.Popdown-buttons {
+    width:100%;
+    height: 3rem;
 }
 
 /* buttons for popdown */
-.Popdown-button {
+.Popdown-container .Popdown-button {
     color: white;
-}
-
-/* ok button on alert popdown */
-.Popdown-alert .Popdown-button {
-    position: absolute;
-    bottom:0;
-    right: 0;
-    left: 0;
-    background-color: rgb(0, 150, 255);
-    width:100%;
-    height: 3rem;
-    font-size: 2rem;
+    font-size: 2em;
     border:0;
-    border-radius: 0 0 0.5rem 0.5rem;
     outline: none;
 }
 
-/* color for mouseover */
-.Popdown-alert .Popdown-button:hover {
-    background-color: rgb(0, 200, 255);
+/* full width button */
+.Popdown-container .Popdown-button-full{
+    width:100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
 }
 
-.Popdown-alert .Popdown-button:active {
-    background-color: rgb(0, 200, 255);
+/* right half button */
+.Popdown-container .Popdown-button-right{
+    width:50%;
+    height: 100%;
+    border-radius: 0 0 10px 0;
+}
+
+/* left half button */
+.Popdown-container .Popdown-button-left{
+    width:50%;
+    height: 100%;
+    border-radius: 0 0 0 10px;
+}
+
+/* ok buttons */
+.Popdown-container .Popdown-ok {
+    background-color: rgb(0, 150, 255);
+}
+.Popdown-container .Popdown-ok:hover {
+    background-color: rgb(75, 225, 255);
+}
+
+/* cancel buttons */
+.Popdown-container .Popdown-cancel {
+    background-color: rgb(255, 0, 0);
+}
+.Popdown-container .Popdown-cancel:hover {
+    background-color: rgb(255, 75, 75);
+}
+
+/* prompt input */
+.Popdown-container .Popdown-input {
+    box-sizing: border-box;
+    width: 100%;
+    margin:0;
+    padding:0;
 }

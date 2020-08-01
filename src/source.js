@@ -23,6 +23,10 @@ Popdown.start = function () {
 
     //create div for HTML code
     Popdown._div = document.createElement('div'); 
+    //give div the top-level classes
+    Popdown._div.classList.add('Popdown-container');
+    //start hidden
+    Popdown._div.classList.add('Popdown-noShow');
     //fill with html
     Popdown._div.innerHTML = '%%%HTML%%%';
     //add div to body
@@ -43,7 +47,7 @@ Popdown.start = function () {
             box: document.body.querySelector('.Popdown-box.Popdown-alert'),
             header: document.body.querySelector('.Popdown-alert .Popdown-header'),
             message: document.body.querySelector('.Popdown-alert .Popdown-message'),
-            okButton: document.body.querySelector('.Popdown-alert-ok-button'),
+            okButton: document.body.querySelector('.Popdown-alert .Popdown-ok'),
         },
 
         //confirm elements
@@ -51,8 +55,8 @@ Popdown.start = function () {
             box: document.body.querySelector('.Popdown-box.Popdown-confirm'),
             header: document.body.querySelector('.Popdown-confirm .Popdown-header'),
             message: document.body.querySelector('.Popdown-confirm .Popdown-message'),
-            okButton: document.body.querySelector('.Popdown-confirm-ok-button'),
-            cancelButton: document.body.querySelector('.Popdown-confirm-cancel-button'),
+            okButton: document.body.querySelector('.Popdown-confirm .Popdown-ok'),
+            cancelButton: document.body.querySelector('.Popdown-confirm .Popdown-cancel'),
         },
 
         //prompt elements
@@ -60,9 +64,9 @@ Popdown.start = function () {
             box: document.body.querySelector('.Popdown-box.Popdown-prompt'),
             header: document.body.querySelector('.Popdown-prompt .Popdown-header'),
             message: document.body.querySelector('.Popdown-prompt .Popdown-message'),
-            okButton: document.body.querySelector('.Popdown-prompt-ok-button'),
-            cancelButton: document.body.querySelector('.Popdown-prompt-cancel-button'),
-            input: document.body.querySelector('.Popdown-prompt-input'),
+            okButton: document.body.querySelector('.Popdown-prompt .Popdown-ok'),
+            cancelButton: document.body.querySelector('.Popdown-prompt .Popdown-cancel'),
+            input: document.body.querySelector('.Popdown-prompt .Popdown-input'),
         },
     };
 
