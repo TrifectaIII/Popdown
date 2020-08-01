@@ -13,7 +13,7 @@ or, if you want the minified version,
 ```
 
 ## Usage
-First, initalize the library.
+First, initalize the library. This should be done only after the body of your document has loaded.
 ```
 Popdown.start()
 ```
