@@ -3,15 +3,6 @@
  
  **NOTE: Not even close to working yet.**
 
-## Build
-```
-npm run-script build
-```
-or
-```
-node build.js
-```
-
 ## Include
 ```
 <script src="%YOURPATH%/Popdown.js"></script>
@@ -68,3 +59,12 @@ Popdown.prompt('What is your name?', (response) => {console.log(response)});
 |---------|----------------------------------------|----------------|---------|
 | head    | Display text for header of the Popdown | string         | `""`      |
 | context | Context for callback execution         | object/context | `null`    |
+
+## Build
+```
+npm run-script build
+```
+or
+```
+node build.js
+```
