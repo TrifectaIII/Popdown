@@ -99,12 +99,13 @@
     font-size: 2em;
     border:0;
     outline: none;
-    box-shadow: 0 9px #999;
+
+    /* box-shadow: 0 9px #999; */
 }
 
 .Popdown-container .Popdown-button:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+    /* box-shadow: 0 5px #666; */
+    /* transform: translateY(4px); */
 }
 
 /* full width button */
@@ -146,8 +147,18 @@
 
 /* prompt input */
 .Popdown-container .Popdown-input {
+    text-align: center;
+    font-size: 3em;
     box-sizing: border-box;
     width: 100%;
     margin:0;
     padding:0;
+    outline: 0;
+    border:0;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    background-color: rgb(199, 199, 199);
+}
+.Popdown-container .Popdown-input:focus {
+    background-color: white;
 }

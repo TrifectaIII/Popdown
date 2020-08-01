@@ -1,23 +1,23 @@
 Popdown.start();
 
-document.getElementById('alertButton').addEventListener('click', function () {
+document.querySelector('.alertButton').addEventListener('click', function () {
     Popdown.alert('Hello!', null,  {
-        head: "Hi!",
+        head: "An Alert",
     });
 })
 
-document.getElementById('confirmButton').addEventListener('click', function () {
+document.querySelector('.confirmButton').addEventListener('click', function () {
     Popdown.confirm('See console for output', function (bool) {
         console.log(bool)
     }, {
-        head: "Hi!",
+        head: "A Confirm",
     });
 })
 
-document.getElementById('promptButton').addEventListener('click', function () {
+document.querySelector('.promptButton').addEventListener('click', function () {
     Popdown.prompt('See console for output See console for output See console for output See console for output See console for output See console for output See console for output ', function (resp) {
         console.log(resp);
     }, {
-        head: "Hi!",
+        head: "A Prompt",
     });
 })

@@ -154,6 +154,9 @@ Popdown.start = function () {
 
                 //show prompt box
                 Popdown._elements.prompt.box.classList.remove('Popdown-noShow');
+
+                //focus input
+                Popdown._elements.prompt.input.focus();
                 break
         }
     }
