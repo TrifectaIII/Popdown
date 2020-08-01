@@ -94,10 +94,17 @@
 
 /* buttons for popdown */
 .Popdown-container .Popdown-button {
+    /* box-sizing: border-box; */
     color: white;
     font-size: 2em;
     border:0;
     outline: none;
+    box-shadow: 0 9px #999;
+}
+
+.Popdown-container .Popdown-button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 /* full width button */
