@@ -193,10 +193,12 @@ Popdown.start = function () {
         }
         //render next popdown otherwise
         else {
-            Popdown._queue[0].render();
             //show popdown and disable body scrolling
             Popdown._elements.container.classList.remove('Popdown-noShow');
             document.body.classList.add('Popdown-noScroll');
+
+            //render next popdown
+            Popdown._queue[0].render();
         }
     }
 

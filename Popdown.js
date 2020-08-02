@@ -17,7 +17,7 @@ Popdown.start = function () {
     //create style element
     Popdown._style = document.createElement('style');
     //fill with css
-    Popdown._style.innerHTML = '.Popdown-noScroll{overflow:hidden}.Popdown-noShow{display:none !important}.Popdown-container{z-index:1;text-align:center;position:fixed;top:0;bottom:0;right:0;left:0;font-family:sans-serif}.Popdown-container .Popdown-background{background-color:rgba(0,0,0,0.5);position:fixed;top:0;bottom:0;right:0;left:0}.Popdown-container .Popdown-box-container{position:fixed;top:0;bottom:0;right:0;left:0;height:100%;width:100%;display:flex;flex-direction:column;align-items:center;overflow-y:auto}.Popdown-container .Popdown-box{position:relative;width:33%;background-color:white;margin:2em 0;border-radius:10px}@media(max-width:1200px){.Popdown-container .Popdown-box{width:50%}}@media(max-width:650px){.Popdown-container .Popdown-box{width:80%}}.Popdown-container .Popdown-message{margin:2rem}.Popdown-buttons{width:100%;height:3rem}.Popdown-container .Popdown-button{color:white;font-size:2em;border:0;outline:0}.Popdown-container .Popdown-button-full{width:100%;height:100%;border-radius:0 0 10px 10px}.Popdown-container .Popdown-button-right{width:50%;height:100%;border-radius:0 0 10px 0}.Popdown-container .Popdown-button-left{width:50%;height:100%;border-radius:0 0 0 10px}.Popdown-container .Popdown-ok{background-color:#0096ff}.Popdown-container .Popdown-ok:hover{background-color:#4be1ff}.Popdown-container .Popdown-cancel{background-color:red}.Popdown-container .Popdown-cancel:hover{background-color:#ff4b4b}.Popdown-container .Popdown-input{text-align:center;font-size:3em;box-sizing:border-box;width:100%;margin:0;padding:0;outline:0;border:0;border-top:3px solid black;border-bottom:3px solid black;background-color:#c7c7c7}.Popdown-container .Popdown-input:focus{background-color:white}';
+    Popdown._style.innerHTML = '.Popdown-container{z-index:1;text-align:center;position:fixed;top:0;bottom:0;right:0;left:0;font-family:sans-serif;transition:opacity .2s}.Popdown-container .Popdown-background{background-color:rgba(0,0,0,0.5);position:fixed;top:0;bottom:0;right:0;left:0}.Popdown-container .Popdown-box-container{position:fixed;top:0;bottom:0;right:0;left:0;height:100%;width:100%;display:flex;flex-direction:column;align-items:center;overflow-y:auto}.Popdown-container .Popdown-box{position:relative;width:33%;background-color:white;margin:2em 0;border-radius:10px;transition:opacity .5s}@media(max-width:1200px){.Popdown-container .Popdown-box{width:50%}}@media(max-width:650px){.Popdown-container .Popdown-box{width:80%}}.Popdown-container .Popdown-message{margin:2rem}.Popdown-container .Popdown-buttons{width:100%;height:3rem}.Popdown-container .Popdown-button{color:white;font-size:1.5em;border:0;outline:0;border-bottom:8px solid #999;transition:background-color .2s}.Popdown-container .Popdown-button:active{border-bottom:4px solid #999;border-top:4px solid white}.Popdown-container .Popdown-button-full{width:100%;height:3rem;border-radius:0 0 10px 10px;position:absolute;right:0;left:0;bottom:0}.Popdown-container .Popdown-button-right{width:50%;height:3rem;border-radius:10px 10px 10px 0;position:absolute;right:0;bottom:0}.Popdown-container .Popdown-button-left{width:50%;height:3rem;border-radius:10px 10px 0 10px;position:absolute;left:0;bottom:0}.Popdown-container .Popdown-ok{background-color:#0096ff}.Popdown-container .Popdown-ok:hover{background-color:#4be1ff}.Popdown-container .Popdown-cancel{background-color:red}.Popdown-container .Popdown-cancel:hover{background-color:#ff4b4b}.Popdown-container .Popdown-input{font-size:3em;box-sizing:border-box;width:100%;margin:0;padding:10px;outline:0;border:0;background-color:#c7c7c7}.Popdown-container .Popdown-input:focus{background-color:white}.Popdown-noScroll{overflow:hidden}.Popdown-noShow,.Popdown-container .Popdown-noShow{opacity:0;z-index:-1;position:absolute;left:-999rem}';
     //add style to head
     document.head.appendChild(Popdown._style);
 
@@ -193,10 +193,12 @@ Popdown.start = function () {
         }
         //render next popdown otherwise
         else {
-            Popdown._queue[0].render();
             //show popdown and disable body scrolling
             Popdown._elements.container.classList.remove('Popdown-noShow');
             document.body.classList.add('Popdown-noScroll');
+
+            //render next popdown
+            Popdown._queue[0].render();
         }
     }
 
