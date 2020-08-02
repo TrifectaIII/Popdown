@@ -89,15 +89,13 @@
 .Popdown-container .Popdown-button {
     color: white;
     font-size: 1.5em;
-    border:0;
+    border:4px solid rgba(0, 0, 0, 0);
     outline: none;
-    border-bottom: 8px solid #999;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 /* when pressed */
 .Popdown-container .Popdown-button:active {
-    border-bottom: 4px solid #999;
-    border-top: 4px solid white;
+    /* border: 5px solid white; */
 }
 
 /* full width button */
@@ -115,7 +113,7 @@
 .Popdown-container .Popdown-button-right{
     width: 50%;
     height: 3rem; /* should always match height of .buttons */
-    border-radius: 10px 10px 10px 0;
+    border-radius: 0 0 10px 0;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -125,7 +123,7 @@
 .Popdown-container .Popdown-button-left{
     width: 50%;
     height: 3rem; /* should always match height of .buttons */
-    border-radius: 10px 10px 0 10px;
+    border-radius: 0 0 0 10px;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -136,7 +134,11 @@
     background-color: rgb(0, 150, 255);
 }
 .Popdown-container .Popdown-ok:hover {
-    /* hover color */
+    /* hover border color */
+    border-color: rgb(75, 225, 255);
+}
+.Popdown-container .Popdown-ok:active {
+    /* active color */
     background-color: rgb(75, 225, 255);
 }
 
@@ -145,13 +147,17 @@
     background-color: rgb(255, 0, 0);
 }
 .Popdown-container .Popdown-cancel:hover {
-    /* hover color */
+    /* hover border color */
+    border-color: rgb(255, 75, 75);
+}
+.Popdown-container .Popdown-cancel:active {
+    /* active color */
     background-color: rgb(255, 75, 75);
 }
 
 /* prompt input */
 .Popdown-container .Popdown-input {
-    font-size: 3em;
+    font-size: 2em;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
