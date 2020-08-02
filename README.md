@@ -13,7 +13,7 @@ or, if you want the minified version,
 ```
 
 ## Usage
-First, initalize the library.
+First, initalize the library. This should be done only after the body of your document has loaded.
 ```
 Popdown.start()
 ```
@@ -61,6 +61,7 @@ Popdown.prompt('What is your name?', (response) => {console.log(response)});
 | context | Context for callback execution         | object/context | `null`    |
 
 ## Build
+The source files in `src/` are built into the `Popdown.js` and `Popdown.min.js` files using `build.js`. You can execute this script with
 ```
 npm run-script build
 ```
