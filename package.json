@@ -1,8 +1,15 @@
 {
   "name": "popdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Responsive, easy-to-use alternatives for prompt(), alert(), and confirm().",
-  "keywords": ["client", "alert", "confirm", "prompt", "popup", "dialog"],
+  "keywords": [
+    "client",
+    "alert",
+    "confirm",
+    "prompt",
+    "popup",
+    "dialog"
+  ],
   "homepage": "https://github.com/TrifectaIII/Popdown#readme",
   "main": "build.js",
   "browser": "Popdown.min.js",
