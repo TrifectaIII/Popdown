@@ -3,6 +3,8 @@
 
 const path = require('path');
 
+// THE EXPRESS AND HTTP MODULES ARE NOT REQUIRED BY THIS PACKAGE, 
+// SO MANUAL INSTALLATION MAY BE NECESSARY
 const express = require('express'); // load express package
 const app = express(); //create express app
 const serv = require('http').Server(app); //serve http over app
