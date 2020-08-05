@@ -61,7 +61,7 @@ Popdown.prompt('What is your name?', (response) => {console.log(response)});
 | context | Context for callback execution         | object/context | `null`    |
 
 ## Build
-The source files in `src/` are built into the `Popdown.js` and `Popdown.min.js` files using `build.js`. You can execute this script with
+The source files in `src/` are combined into the `Popdown.js` and `Popdown.min.js` files using `build.js`. You can execute this script with
 ```
 npm run-script build
 ```
