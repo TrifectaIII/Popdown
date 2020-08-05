@@ -1,9 +1,9 @@
 {
   "name": "popdown",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Responsive, easy-to-use alternatives for prompt(), alert(), and confirm().",
-  "keywords":[],
-  "homepage":"https://github.com/TrifectaIII/Popdown#readme",
+  "keywords": [],
+  "homepage": "https://github.com/TrifectaIII/Popdown#readme",
   "main": "build.js",
   "browser": "Popdown.min.js",
   "scripts": {
@@ -15,9 +15,9 @@
   },
   "author": "Dakota Madden-Fong <maddenfong@gmail.com> (https://trifectaiii.github.io/)",
   "license": "MIT",
-  "directories":{
-    "test":"./test",
-    "lib":"./src"
+  "directories": {
+    "test": "./test",
+    "lib": "./src"
   },
   "dependencies": {
     "fs": "0.0.1-security",
