@@ -7,7 +7,6 @@
   "main": "build.js",
   "browser": "Popdown.min.js",
   "scripts": {
-    "test": "node test/test_server.js",
     "build": "node build.js"
   },
   "repository": {
