@@ -4,7 +4,7 @@
   "description": "Responsive, easy-to-use alternatives for prompt(), alert(), and confirm().",
   "main": "build.js",
   "scripts": {
-    "test": "node test_server.js",
+    "test": "node test/test_server.js",
     "build": "node build.js"
   },
   "repository": {
@@ -14,10 +14,8 @@
   "author": "Dakota Madden-Fong <maddenfong@gmail.com> (https://trifectaiii.github.io/)",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
     "fs": "0.0.1-security",
     "html-minifier": "^4.0.0",
-    "http": "0.0.1-security",
     "path": "^0.12.7",
     "uglify-js": "^3.10.0",
     "uglifycss": "0.0.29"
