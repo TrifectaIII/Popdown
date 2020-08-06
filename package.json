@@ -22,10 +22,6 @@
   },
   "author": "Dakota Madden-Fong <maddenfong@gmail.com> (https://trifectaiii.github.io/)",
   "license": "MIT",
-  "directories": {
-    "test": "./test",
-    "lib": "./src"
-  },
   "dependencies": {
     "fs": "0.0.1-security",
     "html-minifier": "^4.0.0",
