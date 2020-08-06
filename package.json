@@ -1,6 +1,6 @@
 {
   "name": "popdown",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Responsive, easy-to-use alternatives for prompt(), alert(), and confirm().",
   "keywords": [
     "client",
