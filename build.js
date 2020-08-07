@@ -76,10 +76,11 @@ function buildFiles (location) {
     };
 }
 
-// build files to local directory & docs if this is the main file
+// if this is the main file,
+// then build both files to local directory & full file to docs
 if (!module.parent) {
     buildFiles(__dirname);
-    buildFiles(path.resolve(__dirname, 'docs'));
+    buildToFile(path.resolve(__dirname, 'docs'));
 }
 
 //export functions
