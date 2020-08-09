@@ -3,29 +3,6 @@
  
  **NOTE: Mostly working, but not yet fully tested.**
 
-## Installation
-```
-npm install --save popdown
-```
-
-## Build
-First, require the package
-```
-const Popdown = require('popdown');
-```
-The package comes with multiple methods to allow you to build the client-side js files
-```
-Popdown.buildString(); //returns a string representation of the client-side js file
-
-Popdown.buildStringMin(); //returns a string representation of the client-side js file (minified)
-
-Popdown.buildToFile(location); //saves the client side js file to "Popdown.js" at the specified location
-
-Popdown.buildToFileMin(location); //saves the client side js file (minified) to "Popdown.min.js" at the specified location
-
-Popdown.buildFiles(location); //executes both of the above methods
-```
-
 ## Include
 ```
 <script src="%YOURPATH%/Popdown.js"></script>
@@ -35,7 +12,7 @@ or, if you want the minified version,
 <script src="%YOURPATH%/Popdown.min.js"></script>
 ```
 
-## Client-Side API
+## Usage
 First, initalize the library. This should be done only after the body of your document has loaded.
 ```
 Popdown.start()
@@ -82,3 +59,25 @@ Popdown.prompt('What is your name?', (response) => {console.log(response)});
 |---------|----------------------------------------|----------------|---------|
 | head    | Display text for header of the Popdown | string         | `""`      |
 | context | Context for callback execution         | object/context | `null`    |
+
+## Build Instructions
+First, install:
+```
+npm install --save popdown
+```
+Then, require:
+```
+const Popdown = require('popdown');
+```
+The package comes with multiple methods to allow you to build the client-side js files:
+```
+Popdown.buildString(); //returns a string representation of the client-side js file
+
+Popdown.buildStringMin(); //returns a string representation of the client-side js file (minified)
+
+Popdown.buildToFile(location); //saves the client side js file to "Popdown.js" at the specified location
+
+Popdown.buildToFileMin(location); //saves the client side js file (minified) to "Popdown.min.js" at the specified location
+
+Popdown.buildFiles(location); //executes both of the above methods
+```
