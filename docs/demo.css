@@ -1,0 +1,8 @@
+.testButtons {
+    text-align: center;
+}
+
+.testButton {
+    box-sizing: border-box;
+    font-size: larger;
+}

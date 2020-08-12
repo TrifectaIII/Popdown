@@ -150,11 +150,11 @@
 }
 .Popdown-container .Popdown-cancel:hover {
     /* hover border color */
-    border-color: rgb(255, 75, 75);
+    border-color: rgb(255, 100, 100);
 }
 .Popdown-container .Popdown-cancel:active {
     /* active color */
-    background-color: rgb(255, 75, 75);
+    background-color: rgb(255, 100, 100);
 }
 
 /* prompt input */

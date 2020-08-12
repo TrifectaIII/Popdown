@@ -15,7 +15,7 @@ document.querySelector('.confirmButton').addEventListener('click', function () {
 })
 
 document.querySelector('.promptButton').addEventListener('click', function () {
-    Popdown.prompt('See console for output See console for output See console for output See console for output See console for output See console for output See console for output ', function (resp) {
+    Popdown.prompt('See console for output', function (resp) {
         console.log(resp);
     }, {
         head: "A Prompt",
