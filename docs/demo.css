@@ -1,3 +1,18 @@
+.title {
+    font-weight: bold;
+}
+
+.links {
+    text-align: center;
+    font-size: xx-large;
+}
+
+.link {
+    font-weight: bold;
+    text-decoration: none;
+    padding: auto;
+}
+
 .testButtons {
     text-align: center;
 }
