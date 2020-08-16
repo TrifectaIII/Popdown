@@ -20,14 +20,26 @@
     </head>
     <body>
         <div class='container'>
-            <h1 class='title'>Popdown</h1>
-            <h3 class='info'>Responsive, lightweight, easy-to-use alternatives for <div class='code'>prompt()</div>, <div class='code'>alert()</div>, and <div class='code'>confirm()</div>.</h3>
-            <div class='links'>
+            <div class='headbar row'>
+                <p>Created by
+                    <!-- will link to ghp homepage when deployed -->
+                    <a href="../" tabindex="-1">Dakota Madden-Fong</a>
+                </p>
+            </div>
+            <div class='row'>
+                <h1 class='title'>Popdown</h1>
+            </div>
+            <div class='row'>
+                <h3 class='info'>Responsive, lightweight, easy-to-use alternatives for <div class='code'>prompt()</div>, <div class='code'>alert()</div>, and <div class='code'>confirm()</div>.</h3>
+            </div>
+            
+            <div class='links row'>
                 <a class='link' href="https://github.com/TrifectaIII/Popdown">github</a><br>
                 <a class='link' href="https://www.npmjs.com/package/popdown">npm</a><br>
                 <a class='link' href="https://www.jsdelivr.com/package/npm/popdown">CDN</a>
             </div>
-            <div class='testButtons'>
+            
+            <div class='testButtons row'>
                 <button class='testButton alertButton'>Demo Alert</button>
                 <button class='testButton confirmButton'>Demo Confirm</button>
                 <button class='testButton promptButton'>Demo Prompt</button>
@@ -35,7 +47,5 @@
         </div>
         
         <script src="demo.js"></script>
-        <!-- dark mode js script from main page -->
-        <script src="../site/dark.js"></script>
     </body>
 </html>

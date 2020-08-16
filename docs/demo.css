@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
+
+body, html {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.headbar {
+    text-align: center;
+}
+
 .title {
     font-weight: bold;
 }
@@ -7,19 +17,24 @@
     font-size: xx-large;
 }
 
+a {
+    text-decoration: none;
+}
+
 .link {
     font-weight: bold;
-    text-decoration: none;
     padding: auto;
 }
 
 .testButtons {
     text-align: center;
+    
 }
 
 .testButton {
     box-sizing: border-box;
     font-size: larger;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 .code {
