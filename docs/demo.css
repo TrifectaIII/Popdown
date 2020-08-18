@@ -37,6 +37,10 @@ a {
     font-family: 'Lexend Deca', sans-serif;
 }
 
+button {
+    font-size: larger!important;
+}
+
 .code {
     background-color: rgba(0, 0, 0, 0.15);
     font-family: monospace;
