@@ -35,6 +35,21 @@ a {
     box-sizing: border-box;
     font-size: larger;
     font-family: 'Lexend Deca', sans-serif;
+    color: black;
+    border: 2px solid black;
+    height: auto;
+}
+
+.alertButton {
+    background-color: lightskyblue;
+}
+
+.confirmButton {
+    background-color: lightgreen;
+}
+
+.promptButton {
+    background-color: rgb(255, 255, 150);
 }
 
 button {
