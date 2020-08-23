@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
 
-body, html {
+* {
     font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -26,10 +26,14 @@ a {
     padding: auto;
 }
 
+.section {
+    font-weight: bold;
+}
+
 .testButtons {
     text-align: center;
-    
-}
+    margin: auto;
+}   
 
 .testButton {
     box-sizing: border-box;
