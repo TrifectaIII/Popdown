@@ -39,9 +39,14 @@ a {
     box-sizing: border-box;
     font-size: larger;
     font-family: 'Lexend Deca', sans-serif;
-    color: black;
-    border: 2px solid black;
+    color: rgb(50, 50, 50);
+    border: 2px solid rgb(50, 50, 50);
     height: auto;
+}
+
+.testButton:hover, .testButton:active {
+    border-color: black;
+    color:black;
 }
 
 .alertButton {
@@ -61,7 +66,7 @@ button {
 }
 
 .code {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.10);
     font-family: monospace;
     display: inline;
 }
