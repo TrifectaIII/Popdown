@@ -30,23 +30,35 @@ a {
     font-weight: bold;
 }
 
+.download {
+    text-align: center;
+}
+
 .testButtons {
     text-align: center;
     margin: auto;
 }   
 
-.testButton {
+.testButton, .downloadButton {
     box-sizing: border-box;
     font-size: larger;
     font-family: 'Lexend Deca', sans-serif;
     color: rgb(50, 50, 50);
-    border: 2px solid rgb(50, 50, 50);
+    border: 2px solid rgb(75, 75, 75);
     height: auto;
 }
 
-.testButton:hover, .testButton:active {
+.testButton:hover, .testButton:active, .testButton:focus,
+.downloadButton:hover, .downloadButton:active, .downloadButton:focus {
     border-color: black;
     color:black;
+}
+
+.downloadButton {
+    margin: 5rem;
+    font-size: xx-large!important;
+    padding: 2rem 3rem;
+
 }
 
 .alertButton {
